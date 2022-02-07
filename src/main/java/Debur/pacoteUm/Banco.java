@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Banco {
     private static int AGENCIA_PADRAO = 1;
-    private String nome;
+    private final String nome;
     private final int agencia;
     private List<Conta> contas;
 
@@ -19,14 +19,10 @@ public class Banco {
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
     public void imprimirAtributo() {
-        System.out.println(String.format("\n*** %s ***", this.nome));
-        System.out.println(String.format("Agencia: %d", this.agencia));
-        System.out.println(String.format("Numero de contas: %d", this.contas.size()));
+        System.out.printf("\n*** %s ***%n", this.getNome());
+        System.out.printf("Agencia: %d%n", this.getAgencia());
+        System.out.printf("Numero de contas: %d%n", this.contas.size());
     }
 
     public void imprimirContas() {
@@ -41,14 +37,6 @@ public class Banco {
 
     public void adicionarConta(Conta conta) {
         contas.add(conta);
-    }
-
-    public List<Conta> getContas() {
-        return contas;
-    }
-
-    public void setContas(List<Conta> contas) {
-        this.contas = contas;
     }
 
     public int getAgencia() {
