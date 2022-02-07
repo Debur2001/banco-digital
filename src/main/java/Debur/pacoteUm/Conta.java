@@ -2,7 +2,6 @@ package Debur.pacoteUm;
 
 public abstract class Conta {
 
-    private static final int AGENCIA_PADRAO = 1;
     private static int SEQUENCIAL = 1;
 
     protected int agencia;
@@ -12,7 +11,6 @@ public abstract class Conta {
 
 
     public Conta() {
-        this.agencia = AGENCIA_PADRAO;
         this.numero = SEQUENCIAL++;
     }
 
@@ -37,5 +35,10 @@ public abstract class Conta {
         System.out.println(String.format("Agencia: %d", this.agencia));
         System.out.println(String.format("Numero: %d", this.numero));
         System.out.println(String.format("Saldo: %.2f", this.saldo));
+    }
+
+    protected void linkaContaEBanco(Banco banco) {
+        this.agencia = banco.getAgencia();
+        banco.adicionarConta(this);
     }
 }
